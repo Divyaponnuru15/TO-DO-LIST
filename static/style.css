@@ -63,3 +63,69 @@
         border-radius: 10px;
 
        }
+
+       /* --- Due Date Input Field --- */
+#due-date {
+  height: 25px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 5px 8px;
+  background-color: #fff;
+}
+
+/* --- Due Date Text --- */
+.due-date {
+  font-size: 0.9rem;
+  color: #333;
+  margin-left: 15px;
+}
+
+/* --- Overdue Tasks (Red Highlight) --- */
+/* .overdue {
+  color: red;
+  font-weight: bold;
+} */
+ /* --- Overdue Tasks (better visual alert) --- */
+.todo.overdue {
+  border-left: 10px solid red;
+  background-color: #ffe6e6;
+}
+
+/* --- Checked Tasks (Strike-through effect) --- */
+/* .checked-task {
+  text-decoration: line-through;
+  color: gray;
+} */
+
+.checked-task {
+  text-decoration: line-through;
+  color: gray;
+  opacity: 0.7;
+}
+
+/* --- Due Date Text --- */
+.due-date {
+  font-size: 0.9rem; 
+  color: #333;
+  margin-left: 15px;
+}
+
+/* --- Priority Styles --- */
+.priority-text {
+  font-size: 0.9rem;
+  margin-left: 20px;
+}
+
+.priority-high {
+  color: red;
+  font-weight: bold;
+}
+
+.priority-medium {
+  color: darkviolet;
+}
+
+.priority-low {
+  color: green;
+}
