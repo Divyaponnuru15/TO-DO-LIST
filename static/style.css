@@ -81,22 +81,12 @@
   margin-left: 15px;
 }
 
-/* --- Overdue Tasks (Red Highlight) --- */
-/* .overdue {
-  color: red;
-  font-weight: bold;
-} */
- /* --- Overdue Tasks (better visual alert) --- */
+
 .todo.overdue {
   border-left: 10px solid red;
   background-color: #ffe6e6;
 }
 
-/* --- Checked Tasks (Strike-through effect) --- */
-/* .checked-task {
-  text-decoration: line-through;
-  color: gray;
-} */
 
 .checked-task {
   text-decoration: line-through;
@@ -128,4 +118,55 @@
 
 .priority-low {
   color: green;
+}
+
+
+/* --- Mobile Responsive --- */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .input-container {
+        flex-direction: column;   /* stack inputs vertically */
+        gap: 8px;
+        align-items: stretch;
+    }
+
+    #input-todo, #due-date, #priority, #add-todo {
+        width: 100%;             /* full width */
+        font-size: 1rem;
+    }
+
+    #add-todo {
+        font-size: 1.2rem;
+        height: 40px;
+    }
+
+    .todo-container {
+        width: 100%;
+        gap: 12px;
+    }
+
+    .todo {
+        flex-direction: column;  /* stack name, due date, priority vertically */
+        align-items: flex-start;
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    .actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 5px;
+    }
+
+    .due-date, .priority-text {
+        margin-left: 0;
+        font-size: 0.85rem;
+    }
+
+    h1, h2 {
+        font-size: 1.5rem;
+    }
 }
