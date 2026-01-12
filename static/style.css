@@ -1,172 +1,162 @@
-
-        body{
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            background-color:lightslategray;
-        }
-       h1,
-       h2{
-        text-align: center;
-       }
-
-       .input-container{
-        display: flex;
-        justify-content: center;
-        align-items: center;  
-        gap: 10px;  
-       }
-       #input-todo{
-        width: 250px;
-        height: 25px;
-        font-size: 1.25rem;
-       }
-
-       #add-todo{
-        height: 40px;
-        width: 40px;
-        border-radius: 20px;
-        border: none;
-        background-color: lightgreen;
-        font-size: 1.5rem;
-        cursor: pointer;
-       }
-
-       .todo-container{
-        width: 80vw;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-
-       }
-
-       .todo {
-        background-color: lightsteelblue;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-radius: 10px;
-        padding: 0px 10px;
-        font-size: 1.1rem;
-       }
-
-       .actions>form{
-        display: inline;
-       }
-       .actions > form > button{
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        background-color: red;
-        color: white;
-        border: none;
-        padding: 5px;
-        font-size: 1.1rem;
-        cursor: pointer;
-        border-radius: 10px;
-
-       }
-
-       /* --- Due Date Input Field --- */
-#due-date {
-  height: 25px;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  padding: 5px 8px;
-  background-color: #fff;
+/* --- General --- */
+body {
+    font-family: 'Trebuchet MS', sans-serif;
+    background-color: lightslategray;
+    margin: 0;
+    padding: 20px;
 }
 
-/* --- Due Date Text --- */
-.due-date {
-  font-size: 0.9rem;
-  color: #333;
-  margin-left: 15px;
+h1, h2 {
+    text-align: center;
+    color: black;
 }
 
+/* --- Input Form --- */
+.input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    gap: 10px;  
+    margin-bottom: 20px;
+}
+
+#input-todo, #due-date, #priority {
+    padding: 6px 8px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#input-todo {
+    width: 250px;
+}
+
+#add-todo {
+    height: 30px;
+    width: 40px;
+    border-radius: 20px;
+    border: none;
+    background-color: lightgreen;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* --- Todo Container --- */
+.todo-container {
+    width: 80vw;
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* --- Each Todo Item --- */
+/* --- Todo Item Layout --- */
+.todo {
+    background-color: lightsteelblue;
+    display: flex;
+    justify-content: space-between; /* task info left, actions right */
+    align-items: flex-start;        /* align text at top */
+    border-radius: 10px;
+    padding: 6px 10px;             /* reduced padding */
+    gap: 3px;                       /* smaller gap */
+    flex-wrap: wrap;                /* allow text to wrap if needed */
+}
+
+/* Container for task info */
+.todo-info {
+    display: flex;
+    flex-direction: column;  /* stack name, due date, priority vertically */
+    gap: 4px;                /* reduced gap */
+}
+
+/* Actions container */
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;                 /* smaller gap */
+    align-items: flex-end;    /* keep delete button and checkbox aligned right */
+}
+
+/* Completed task */
+.checked-task {
+    text-decoration: line-through;
+    color: gray;
+    opacity: 0.7;
+}
+
+/* Overdue task */
+.todo.overdue {
+    border-left: 6px solid red;   /* slightly thinner border */
+    background-color: #ffe6e6;
+}
+
+/* Due date and priority text */
+.due-date, .priority-text {
+    font-size: 0.85rem;   /* slightly smaller font */
+    margin: 0;            /* remove extra margin */
+}
+
+
+.priority-high { color: red; font-weight: bold; }
+.priority-medium { color: darkviolet; }
+.priority-low { color: green; }
+
+/* Actions */
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+
+.actions > form > button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+/* Completed & Overdue */
+.checked-task {
+    text-decoration: line-through;
+    color: gray;
+    opacity: 0.7;
+}
 
 .todo.overdue {
-  border-left: 10px solid red;
-  background-color: #ffe6e6;
+    border-left: 8px solid red;
+    background-color: #ffe6e6;
 }
-
-
-.checked-task {
-  text-decoration: line-through;
-  color: gray;
-  opacity: 0.7;
-}
-
-/* --- Due Date Text --- */
-.due-date {
-  font-size: 0.9rem; 
-  color: #333;
-  margin-left: 15px;
-}
-
-/* --- Priority Styles --- */
-.priority-text {
-  font-size: 0.9rem;
-  margin-left: 20px;
-}
-
-.priority-high {
-  color: red;
-  font-weight: bold;
-}
-
-.priority-medium {
-  color: darkviolet;
-}
-
-.priority-low {
-  color: green;
-}
-
 
 /* --- Mobile Responsive --- */
 @media (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
-
     .input-container {
-        flex-direction: column;   /* stack inputs vertically */
-        gap: 8px;
+        flex-direction: column;
         align-items: stretch;
     }
 
     #input-todo, #due-date, #priority, #add-todo {
-        width: 100%;             /* full width */
+        width: 100%;
         font-size: 1rem;
     }
 
-    #add-todo {
-        font-size: 1.2rem;
-        height: 40px;
+    .todo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .actions {
+        flex-direction: row;
+        margin-top: 10px;
     }
 
     .todo-container {
         width: 100%;
         gap: 12px;
-    }
-
-    .todo {
-        flex-direction: column;  /* stack name, due date, priority vertically */
-        align-items: flex-start;
-        padding: 10px;
-        font-size: 1rem;
-    }
-
-    .actions {
-        display: flex;
-        gap: 10px;
-        margin-top: 5px;
-    }
-
-    .due-date, .priority-text {
-        margin-left: 0;
-        font-size: 0.85rem;
-    }
-
-    h1, h2 {
-        font-size: 1.5rem;
     }
 }
