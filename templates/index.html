@@ -4,68 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TO DO LIST</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
-   
-</head> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 <body>
-    <h1>"TO DO LIST"</h1>
-    <!-- <form action="{{url_for('home')}}" class="input-container"method="POST">
-        <input type="text" placeholder="Enter your task " id="input-todo" name="todo_name">
-        <button id="add-todo">+</button>
-    </form> -->
+    <h1>TO DO LIST</h1>
 
     <form action="{{ url_for('home') }}" class="input-container" method="POST">
-    <input type="text" placeholder="Enter your task" id="input-todo" name="todo_name" required>
-    <input type="date" name="due_date" id="due-date">  <!-- 🟢 New due date field -->
-      <!-- 🟢 New Priority Dropdown -->
-    <select name="priority" id="priority">
-        <option value="High">High</option>
-        <option value="Medium" selected>Medium</option>
-        <option value="Low">Low</option>
-    </select>
-    
-    <button id="add-todo">+</button>
-</form>
+        <input type="text" placeholder="Enter your task" id="input-todo" name="todo_name" required>
+
+        <input 
+            type="text" 
+            name="due_date" 
+            id="due-date" 
+            placeholder="dd/mm/yyyy" 
+            onfocus="(this.type='date')" 
+            onblur="(this.value === '' ? this.type='text' : this.type='date')"
+        >
+
+        <select name="priority" id="priority">
+            <option value="High">High</option>
+            <option value="Medium" selected>Medium</option>
+            <option value="Low">Low</option>
+        </select>
+
+        <button id="add-todo">+</button>
+    </form>
 
     <h2>Your Tasks</h2>
     <div class="todo-container">
         {% for item in items %}
-        <div class="todo {% if item.is_overdue %}overdue{% endif %}">
+        <div class="todo {% if item.is_overdue %}overdue{% endif %} {% if item.checked %}checked-task{% endif %}">
 
             <p>{{ item.name }}</p>
-<p class="due-date">
-    Due: {{ item.due_date if item.due_date else 'No due date' }}
-    {% if item.is_overdue %}
-        <span style="color: red;">(Overdue)</span>
-    {% endif %}
-</p>
 
-<!-- 🟢 Show Priority -->
-<p class="priority-text">
-    Priority: 
-    <span class="priority-{{ item.priority|lower }}">
-        {{ item.priority }}
-    </span>
-</p>
+            <p class="due-date">
+                Due: {{ item.due_date if item.due_date else 'No due date' }}
+                {% if item.is_overdue %}
+                    <span style="color: red;">(Overdue)</span>
+                {% endif %}
+            </p>
 
-          
-            <!-- <p>{{item.name}}</p>
-            <p class="due-date">Due: {{ item.due_date if item.due_date else 'No due date' }}</p> -->
+            <p class="priority-text">
+                Priority: 
+                <span class="priority-{{ item.priority|lower }}">
+                    {{ item.priority }}
+                </span>
+            </p>
 
-            
-            
             <div class="actions">
-                <form action="{{url_for('checked_todo',todo_id=item.id)}}"method="POST">
-                    <input type="checkbox" {%if item.checked %}checked{% endif %} onchange="this.form.submit()">
+                <form action="{{ url_for('checked_todo', todo_id=item.id) }}" method="POST">
+                    <input type="checkbox" {% if item.checked %}checked{% endif %} onchange="this.form.submit()">
                 </form>
-                <form action="{{url_for('delete_todo',todo_id=item.id)}}"method="POST">
+                <form action="{{ url_for('delete_todo', todo_id=item.id) }}" method="POST">
                     <button>Delete</button>
                 </form>
             </div>
         </div>
-         {% endfor %}
+        {% endfor %}
     </div>
-   
-         
 </body>
-</html> 
+</html>
